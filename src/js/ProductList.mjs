@@ -7,7 +7,7 @@ function productCardTemplate(productData) {
               alt="Image of ${productData.Name}" />
             <h3 class="card__brand">${productData.Brand.Name}</h3>
             <h2 class="card__name">${productData.NameWithoutBrand}</h2>
-            <p class="product-card__price">$${productData.ListPrice}</p>
+            <p class="product-card__price">$${productData.FinalPrice}</p>
           </a>
         </li>`
 }
@@ -27,11 +27,11 @@ export default class ProductListing {
     async init() {
         const selectedIds = ["880RR", "985RF", "985PR", "344YJ"]
         const products = await this.dataSource.getData()
-        
+
         this.renderList(this.filterProducts(products, selectedIds), this.listElement, "afterbegin")
     }
 
-    renderList(products, containerElement, listPositionInContainer = "afterbegin") {
-        renderListWithTemplate(productCardTemplate, containerElement, products, listPositionInContainer, true)
+    renderList(products) {
+        renderListWithTemplate(productCardTemplate, this.listElement, products, true)
     }
 }
