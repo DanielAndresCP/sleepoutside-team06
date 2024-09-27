@@ -25,4 +25,4 @@ document
 
 const productId = getParams("product");
 
-console.log(await dataSource.findProductById(productId));
+console.log(dataSource.findProductById(productId));
