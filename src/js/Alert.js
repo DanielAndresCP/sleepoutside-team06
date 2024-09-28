@@ -29,6 +29,18 @@ export default class Alert {
 
   async fetchAlerts() {
     const response = await fetch(this.alertsFilepath);
-    return await response.json();
+
+    // We get the text of the response instead of the json
+    // because the json method gives an error
+    // if the file is completely empty (not just empty array)
+    const text = await response.text()
+
+    // If the file is empty, we assume no alerts are defined,
+    // and return an empty array
+    if (!text) {
+      return []
+    }
+
+    return JSON.parse(text);
   }
 }
