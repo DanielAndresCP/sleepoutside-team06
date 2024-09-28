@@ -32,6 +32,6 @@ export default class ProductListing {
     }
 
     renderList(products) {
-        renderListWithTemplate(productCardTemplate, this.listElement, products, true)
+        renderListWithTemplate(productCardTemplate, this.listElement, products, "afterBegin", true)
     }
 }
