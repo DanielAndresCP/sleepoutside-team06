@@ -12,7 +12,7 @@ export default class Alert {
   async init() {
     const alerts = await this.fetchAlerts();
 
-    if (alerts.lenght === 0) {
+    if (alerts.length === 0) {
       return;
     }
 
