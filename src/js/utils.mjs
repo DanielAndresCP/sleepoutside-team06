@@ -22,6 +22,14 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+
+export function renderListWithTemplate(templateFn, parentElemnt, list, position, clear = false) {
+  const listElments = list.map(templateFn)
+  if (clear) {
+    parentElemnt.innerHTML = ""
+  }
+  parentElemnt.insertAdjacentHTML(position, listElments.join(""));
+}
 export function getParams(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
