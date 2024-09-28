@@ -30,3 +30,9 @@ export function renderListWithTemplate(templateFn, parentElemnt, list, position,
   }
   parentElemnt.insertAdjacentHTML(position, listElments.join(""));
 }
+export function getParams(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const value = urlParams.get(param);
+  return value;
+}
