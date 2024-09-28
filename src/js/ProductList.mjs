@@ -28,7 +28,7 @@ export default class ProductListing {
         const selectedIds = ["880RR", "985RF", "985PR", "344YJ"]
         const products = await this.dataSource.getData()
 
-        this.renderList(this.filterProducts(products, selectedIds), this.listElement, "afterbegin")
+        this.renderList(this.filterProducts(products, selectedIds))
     }
 
     renderList(products) {
