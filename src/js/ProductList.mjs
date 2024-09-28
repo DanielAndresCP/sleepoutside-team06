@@ -12,25 +12,21 @@ function productCardTemplate(productData) {
         </li>`
 }
 
-
 export default class ProductListing {
     constructor(category, dataSource, listElement) {
         this.category = category;
         this.dataSource = dataSource
         this.listElement = listElement
     }
-
     filterProducts(productList, productIdList) {
         return productList.filter((x) => productIdList.includes(x.Id))
     }
-
     async init() {
         const selectedIds = ["880RR", "985RF", "985PR", "344YJ"]
         const products = await this.dataSource.getData()
 
         this.renderList(this.filterProducts(products, selectedIds))
     }
-
     renderList(products) {
         renderListWithTemplate(productCardTemplate, this.listElement, products, "afterBegin", true)
     }
