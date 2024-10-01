@@ -25,6 +25,13 @@ export default class ProductListing {
         const products = await this.dataSource.getData(this.category)
 
         this.renderList(products)
+
+        // This line takes the category that comes on the parameter, replaces hyphens with spaces, and makes the first letter uppercase
+        const prettyCategoryName =
+        this.category.replace("-", " ").slice(0, 1).toLocaleUpperCase() +
+        this.category.replace("-", " ").slice(1);
+        document.querySelector(".products > h2").textContent =
+        `Top Products: ${prettyCategoryName}`;
     }
     renderList(products) {
         renderListWithTemplate(productCardTemplate, this.listElement, products, "afterBegin", true)

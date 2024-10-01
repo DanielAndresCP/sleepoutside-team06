@@ -12,10 +12,3 @@ const productList = new ProductListing(
 );
 
 productList.init();
-
-// This line takes the category that comes on the parameter, replaces hyphens with spaces, and makes the first letter uppercase
-const prettyCategoryName =
-  category.replace("-", " ").slice(0, 1).toLocaleUpperCase() +
-  category.replace("-", " ").slice(1);
-document.querySelector(".products > h2").textContent =
-  `Top Products: ${prettyCategoryName}`;
