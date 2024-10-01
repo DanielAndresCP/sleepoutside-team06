@@ -76,6 +76,29 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+
+/* homepage alerts customization */
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+
+  background-color: var(--light-grey);
+  border: 1px solid var(--dark-grey);
+}
+
+.alert-list p {
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+/* end homepage alerts customization */
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);

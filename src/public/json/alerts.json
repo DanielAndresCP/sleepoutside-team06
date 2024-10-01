@@ -1,0 +1,17 @@
+[
+  {
+    "message": "This is a test",
+    "background": "darkblue",
+    "color": "white"
+  },
+  {
+    "message": "This is another test",
+    "background": "wheat",
+    "color": "black"
+  },
+  {
+    "message": "This is the ultimate test",
+    "background": "darkred",
+    "color": "white"
+  }
+]
