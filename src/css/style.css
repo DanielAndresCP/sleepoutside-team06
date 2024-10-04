@@ -12,6 +12,10 @@
   --font-base: 18px;
   --small-font: 0.8em;
   --large-font: 1.2em;
+
+  /* font weights*/
+  --weight-normal: 500;
+  --weight-bold: 700;
 }
 * {
   box-sizing: border-box;
@@ -178,6 +182,46 @@ button {
   font-size: 1em;
 }
 /* End product list card */
+
+/* start category list and card styles */
+.category-list {
+  display: flex;
+  padding: 0 0.5em;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  color: var(--dark-grey);
+}
+
+.category-list li {
+  list-style-type: none;
+}
+
+.category-card a {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--dark-grey);
+  text-decoration: none;
+}
+
+.category-card a img {
+  display: block;
+  width: 100px;
+}
+
+.category-card a p {
+  margin: 0;
+  font-weight: var(--weight-bold);
+}
+
+/* end category list and card styles */
 
 .product-detail {
   padding: 1em;
