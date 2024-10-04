@@ -11,6 +11,7 @@ export default class ShoppingCart {
         if (Array.isArray(cartItems)) {
         const htmlItems = cartItems.map((item) => cartItemTemplate(item));
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
+        addEventListeners();
         }
     }
 }
@@ -27,9 +28,34 @@ const newItem = `<li class="cart-card divider">
     <h2 class="card__name">${item.Name}</h2>
 </a>
 <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-<p class="cart-card__quantity">qty: 1</p>
+<div class="cart-card__quantity">Quantity: <p class="cart-card__quantity-value">1</p> <button class="quantity-value-increase">+</button> <button class="quantity-value-decrease">-</button></div>
 <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
 return newItem;
+}
+
+function addEventListeners() {
+    const increaseButtons = document.querySelectorAll(".quantity-value-increase");
+    const decreaseButtons = document.querySelectorAll(".quantity-value-decrease");
+  
+    increaseButtons.forEach((button, index) => {
+      button.addEventListener("click", () => updateQuantity(index, 1));
+    });
+  
+    decreaseButtons.forEach((button, index) => {
+      button.addEventListener("click", () => updateQuantity(index, -1));
+    });
+  }
+  
+function updateQuantity(index, change) {
+    const cartItems = getLocalStorage("so-cart");
+    if (Array.isArray(cartItems)) {
+        const item = cartItems[index];
+        const quantityElement = document.querySelectorAll(".cart-card__quantity-value")[index];
+        let quantity = parseInt(quantityElement.textContent);
+        quantity += change;
+        if (quantity < 1) quantity = 1;
+        quantityElement.textContent = quantity;
+    }
 }
