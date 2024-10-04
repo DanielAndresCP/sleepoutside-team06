@@ -33,12 +33,12 @@ export default class Alert {
     // We get the text of the response instead of the json
     // because the json method gives an error
     // if the file is completely empty (not just empty array)
-    const text = await response.text()
+    const text = await response.text();
 
     // If the file is empty, we assume no alerts are defined,
     // and return an empty array
     if (!text) {
-      return []
+      return [];
     }
 
     return JSON.parse(text);
