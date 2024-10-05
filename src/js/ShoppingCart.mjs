@@ -47,18 +47,6 @@ function addEventListeners() {
       button.addEventListener("click", () => updateQuantity(index, -1));
     });
   }
-  
-// function updateQuantity(index, change) {
-//     const cartItems = getLocalStorage("so-cart");
-//     if (Array.isArray(cartItems)) {
-//         const item = cartItems[index];
-//         const quantityElement = document.querySelectorAll(".cart-card__quantity-value")[index];
-//         let quantity = parseInt(quantityElement.textContent);
-//         quantity += change;
-//         if (quantity < 1) quantity = 1;
-//         quantityElement.textContent = quantity;
-//     }
-// }
 
 function updateQuantity(index, change) {
     const cartItems = JSON.parse(localStorage.getItem("so-cart"));
@@ -68,7 +56,6 @@ function updateQuantity(index, change) {
         if (item.quantity < 1) item.quantity = 1;
         localStorage.setItem("so-cart", JSON.stringify(cartItems));
         
-        // Update the DOM if necessary
         const quantityElement = document.querySelectorAll(".cart-card__quantity-value")[index];
         quantityElement.textContent = item.quantity;
     }
