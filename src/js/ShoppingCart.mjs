@@ -28,7 +28,7 @@ const newItem = `<li class="cart-card divider">
     <h2 class="card__name">${item.Name}</h2>
 </a>
 <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-<div class="cart-card__quantity">Quantity: <p class="cart-card__quantity-value">1</p> <button class="quantity-value-increase">+</button> <button class="quantity-value-decrease">-</button></div>
+<div class="cart-card__quantity">Quantity: <p class="cart-card__quantity-value">${item.quantity}</p> <button class="quantity-value-increase">+</button> <button class="quantity-value-decrease">-</button></div>
 <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -48,14 +48,28 @@ function addEventListeners() {
     });
   }
   
+// function updateQuantity(index, change) {
+//     const cartItems = getLocalStorage("so-cart");
+//     if (Array.isArray(cartItems)) {
+//         const item = cartItems[index];
+//         const quantityElement = document.querySelectorAll(".cart-card__quantity-value")[index];
+//         let quantity = parseInt(quantityElement.textContent);
+//         quantity += change;
+//         if (quantity < 1) quantity = 1;
+//         quantityElement.textContent = quantity;
+//     }
+// }
+
 function updateQuantity(index, change) {
-    const cartItems = getLocalStorage("so-cart");
+    const cartItems = JSON.parse(localStorage.getItem("so-cart"));
     if (Array.isArray(cartItems)) {
         const item = cartItems[index];
+        item.quantity += change;
+        if (item.quantity < 1) item.quantity = 1;
+        localStorage.setItem("so-cart", JSON.stringify(cartItems));
+        
+        // Update the DOM if necessary
         const quantityElement = document.querySelectorAll(".cart-card__quantity-value")[index];
-        let quantity = parseInt(quantityElement.textContent);
-        quantity += change;
-        if (quantity < 1) quantity = 1;
-        quantityElement.textContent = quantity;
+        quantityElement.textContent = item.quantity;
     }
 }
