@@ -233,6 +233,16 @@ button {
   width: 100%;
 }
 
+.product-detail .product-discount-badge {
+  display: inline-block;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.7rem;
+
+  background-color: var(--primary-color);
+  font-size: var(--small-font);
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
