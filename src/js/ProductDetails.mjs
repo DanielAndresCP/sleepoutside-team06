@@ -46,7 +46,9 @@ export default class ProductDetails {
     addProductToCart() {
         const storedProducts = getLocalStorage("so-cart");
         const newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
-        newStoredProducts.push(this.product);
+        const quantity = 1
+        const productToAdd = { ...this.product, quantity };
+        newStoredProducts.push(productToAdd);
         setLocalStorage("so-cart", newStoredProducts);
     }
     renderProductDetails(selector) {
