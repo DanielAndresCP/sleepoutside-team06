@@ -1,13 +1,10 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getMoneyString } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
 
   if (isDiscounted) {
-    const priceDiff = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(product.SuggestedRetailPrice - product.FinalPrice);
+    const priceDiff = getMoneyString(product.SuggestedRetailPrice - product.FinalPrice);
     var discountBadgeHTML = `<span class="product-discount-badge">${priceDiff} OFF</span>`;
   }
 

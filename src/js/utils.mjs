@@ -66,3 +66,11 @@ async function loadTemplate(path) {
   const template = await response.text();
   return template;
 }
+
+
+export function getMoneyString(amount, locale = "en-US", currency = "USD") {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(amount);
+}
