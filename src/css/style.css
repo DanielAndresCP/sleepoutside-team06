@@ -283,7 +283,7 @@ button {
   grid-column: 3;
 }
 
-.cart-go-to-checkout{
+.cart-go-to-checkout {
   display: inline-block;
   padding: 1rem;
 
@@ -294,11 +294,11 @@ button {
   transition: transform 500ms;
 }
 
-.cart-go-to-checkout::after{
+.cart-go-to-checkout::after {
   content: " >";
 }
 
-.cart-go-to-checkout:hover{
+.cart-go-to-checkout:hover {
   transform: scale(110%);
 }
 
