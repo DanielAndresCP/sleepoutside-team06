@@ -4,7 +4,9 @@ function productDetailsTemplate(product) {
   const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
 
   if (isDiscounted) {
-    const priceDiff = getMoneyString(product.SuggestedRetailPrice - product.FinalPrice);
+    const priceDiff = getMoneyString(
+      product.SuggestedRetailPrice - product.FinalPrice,
+    );
     var discountBadgeHTML = `<span class="product-discount-badge">${priceDiff} OFF</span>`;
   }
 
