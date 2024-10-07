@@ -22,10 +22,16 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function renderListWithTemplate(templateFn, parentElemnt, list, position = "afterBegin", clear = false) {
-  const listElments = list.map(templateFn)
+export function renderListWithTemplate(
+  templateFn,
+  parentElemnt,
+  list,
+  position = "afterBegin",
+  clear = false,
+) {
+  const listElments = list.map(templateFn);
   if (clear) {
-    parentElemnt.innerHTML = ""
+    parentElemnt.innerHTML = "";
   }
   parentElemnt.insertAdjacentHTML(position, listElments.join(""));
 }
