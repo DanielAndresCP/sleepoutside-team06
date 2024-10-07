@@ -283,6 +283,25 @@ button {
   grid-column: 3;
 }
 
+.cart-go-to-checkout{
+  display: inline-block;
+  padding: 1rem;
+
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+
+  transition: transform 500ms;
+}
+
+.cart-go-to-checkout::after{
+  content: " >";
+}
+
+.cart-go-to-checkout:hover{
+  transform: scale(110%);
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
