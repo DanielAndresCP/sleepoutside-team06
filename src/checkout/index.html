@@ -78,45 +78,26 @@
                 />
               </label>
             </fieldset>
-            <fieldset>
-              <legend>Order Summary</legend>
-              <label>
-                Subtotal
-                <input
-                  type="number"
-                  name="result-subtotal"
-                  id="result-subtotal"
-                  disabled
-                />
-              </label>
-              <label>
-                Shipping Estimate
-                <input
-                  type="number"
-                  name="result-shipping-estimate"
-                  id="result-shipping-estimate"
-                  disabled
-                />
-              </label>
-              <label>
-                Tax
-                <input
-                  type="number"
-                  name="result-tax"
-                  id="result-tax"
-                  disabled
-                />
-              </label>
-              <label>
-                Order Total
-                <input
-                  type="number"
-                  name="result-order-total"
-                  id="result-order-total"
-                  disabled
-                />
-              </label>
-            </fieldset>
+
+            <div class="order-result">
+              <h3>Order Summary</h3>
+              <p>
+                Subtotal:
+                <span id="result-subtotal"></span>
+              </p>
+              <p>
+                Shipping Estimate:
+                <span id="result-shipping-estimate"></span>
+              </p>
+              <p>
+                Tax:
+                <span id="result-tax"></span>
+              </p>
+              <p>
+                Order Total:
+                <span id="result-order-total"></span>
+              </p>
+            </div>
             <button type="submit">Checkout</button>
           </form>
         </div>
