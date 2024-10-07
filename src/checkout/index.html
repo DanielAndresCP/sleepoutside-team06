@@ -17,8 +17,8 @@
 
     <main class="divider">
       <section class="products">
-        <div>
-          <h2>Review & Place your Order</h2>
+        <h2>Review & Place your Order</h2>
+        <div class="checkout">
           <form>
             <fieldset>
               <legend>Shipping</legend>
@@ -80,39 +80,47 @@
             </fieldset>
             <button type="submit">Checkout</button>
           </form>
+          <aside>
+            <div class="checkout-summary">
+              <label>
+                Subtotal
+                <input
+                  type="number"
+                  name="result-subtotal"
+                  id="result-subtotal"
+                  disabled
+                />
+              </label>
+              <label>
+                Shipping Estimate
+                <input
+                  type="number"
+                  name="result-shipping-estimate"
+                  id="result-shipping-estimate"
+                  disabled
+                />
+              </label>
+              <label>
+                Tax
+                <input
+                  type="number"
+                  name="result-tax"
+                  id="result-tax"
+                  disabled
+                />
+              </label>
+              <label>
+                Order Total
+                <input
+                  type="number"
+                  name="result-order-total"
+                  id="result-order-total"
+                  disabled
+                />
+              </label>
+            </div>
+          </aside>
         </div>
-        <aside>
-          <div class="checkout-summary">
-            <label>
-              Subtotal
-              <input
-                type="number"
-                name="result-subtotal"
-                id="result-subtotal"
-              />
-            </label>
-            <label>
-              Shipping Estimate
-              <input
-                type="number"
-                name="result-shipping-estimate"
-                id="result-shipping-estimate"
-              />
-            </label>
-            <label>
-              Tax
-              <input type="number" name="result-tax" id="result-tax" />
-            </label>
-            <label>
-              Order Total
-              <input
-                type="number"
-                name="result-order-total"
-                id="result-order-total"
-              />
-            </label>
-          </div>
-        </aside>
       </section>
     </main>
 
