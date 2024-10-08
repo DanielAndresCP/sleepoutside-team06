@@ -22,10 +22,16 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function renderListWithTemplate(templateFn, parentElemnt, list, position = "afterBegin", clear = false) {
-  const listElments = list.map(templateFn)
+export function renderListWithTemplate(
+  templateFn,
+  parentElemnt,
+  list,
+  position = "afterBegin",
+  clear = false,
+) {
+  const listElments = list.map(templateFn);
   if (clear) {
-    parentElemnt.innerHTML = ""
+    parentElemnt.innerHTML = "";
   }
   parentElemnt.insertAdjacentHTML(position, listElments.join(""));
 }
@@ -59,4 +65,11 @@ async function loadTemplate(path) {
   const response = await fetch(path);
   const template = await response.text();
   return template;
+}
+
+export function getMoneyString(amount, locale = "en-US", currency = "USD") {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(amount);
 }
