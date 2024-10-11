@@ -73,3 +73,32 @@ export function getMoneyString(amount, locale = "en-US", currency = "USD") {
     currency: currency,
   }).format(amount);
 }
+
+
+export function alertMessage(message, scroll = true) {
+  const container = document.createElement("div")
+  container.classList.add("alert-list")
+
+  const messageElement = document.createElement("p")
+  messageElement.textContent = message
+
+  const closeAlertElement = document.createElement("span")
+  closeAlertElement.textContent = "x"
+
+  closeAlertElement.addEventListener("click", (e) => {
+    if (e.target.tagName === "SPAN") {
+      console.log(e.target);
+      document.querySelector("main").removeChild(e.target.closest(".alert-list"))
+      
+    }
+  })
+
+
+  container.appendChild(messageElement)
+  container.appendChild(closeAlertElement)
+
+  document.querySelector("main").insertAdjacentElement("afterbegin", container)
+  if (scroll) {
+    container.scrollIntoView({ behavior: "smooth" })
+  }
+}
