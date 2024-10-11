@@ -19,32 +19,32 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
         <div class="checkout">
-          <form>
+          <form name="checkout">
             <fieldset>
               <legend>Shipping</legend>
               <label>
                 First Name
-                <input type="text" name="first-name" id="first-name" required />
+                <input type="text" name="fname" id="fname" required />
               </label>
               <label>
                 Last Name
-                <input type="text" name="last-name" id="last-name" required />
+                <input type="text" name="lname" id="lname" required />
               </label>
               <label>
                 Street
-                <input type="text" name="street" id="street" required />
+                <input  type="text" name="street" id="street" required />
               </label>
               <label>
                 City
-                <input type="text" name="city" id="city" required />
+                <input  type="text" name="city" id="city" required />
               </label>
               <label>
                 State
-                <input type="text" name="state" id="state" required />
+                <input  type="text" name="state" id="state" required />
               </label>
               <label>
                 Zip
-                <input type="text" name="zip-code" id="zip-code" required />
+                <input  type="text" name="zip" id="zip" required />
               </label>
             </fieldset>
 
@@ -52,28 +52,28 @@
               <legend>Payment</legend>
               <label>
                 Card Number
-                <input
+                <input 
                   type="text"
-                  name="card-number"
-                  id="card-number"
+                  name="cardNumber"
+                  id="cardNumber"
                   required
                 />
               </label>
               <label>
                 Expiration
-                <input
+                <input 
                   type="text"
-                  name="card-expiration"
-                  id="card-expiration"
+                  name="expiration"
+                  id="expiration"
                   required
                 />
               </label>
               <label>
                 Security Code
-                <input
+                <input 
                   type="text"
-                  name="card-security-code"
-                  id="card-security-code"
+                  name="code"
+                  id="code"
                   required
                 />
               </label>
@@ -84,6 +84,10 @@
               <p>
                 Subtotal:
                 <span id="result-subtotal"></span>
+              </p>
+              <p>
+                Number of Items:
+                <span id="result-item-amount"></span>
               </p>
               <p>
                 Shipping Estimate:
