@@ -38,7 +38,7 @@ export default class CheckoutProcess {
         this.calculateItemSummary();
 
         document.querySelector("#zip").addEventListener("blur", () => { this.calculateOrdertotal() })
-        document.querySelector(".checkout form button").addEventListener("click", (e) => {
+        document.querySelector(".checkout form").addEventListener("submit", (e) => {
             e.preventDefault()
 
             this.checkout()
