@@ -84,15 +84,14 @@ header {
 /* homepage alerts customization */
 .alert-list {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 0.5rem;
 
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
 
-  background-color: var(--primary-color);
+  background-color: var(--light-grey);
   border: 1px solid var(--dark-grey);
 }
 
@@ -100,14 +99,6 @@ header {
   margin: 0;
   padding: 0.5rem;
   border-radius: 10px;
-}
-
-.alert-list span {
-cursor: pointer;
-
-  margin: 0;
-  padding: 0.5rem;
-
 }
 
 /* end homepage alerts customization */
