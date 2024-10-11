@@ -1,5 +1,5 @@
 import ExternalServices from "./ExternalServices.mjs";
-import { getLocalStorage } from "./utils.mjs"
+import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs"
 import { getMoneyString } from "./utils.mjs";
 
 
@@ -104,13 +104,20 @@ export default class CheckoutProcess {
         json.tax = this.tax.toFixed(2);
         json.shipping = this.shipping;
         json.items = packageItems(this.list);
-        console.log(json);
-        
+        // console.log(json);
+
         try {
             const res = await services.checkout(json);
-            console.log(res);
+            // console.log(res);
+            if (res.orderId) {
+                setLocalStorage("so-cart", "")
+                window.location.pathname = "/checkout/success.html"
+            }
         } catch (err) {
-            console.log(err);
+            for (const key in err.message) {
+                const errorMessage = err.message[key];
+                alertMessage(errorMessage)
+            }
         }
     }
 }
