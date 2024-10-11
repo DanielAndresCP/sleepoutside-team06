@@ -50,7 +50,7 @@ export default class ProductDetails {
     const productToAdd = { ...this.product, quantity };
     newStoredProducts.push(productToAdd);
     setLocalStorage("so-cart", newStoredProducts);
-    alertMessage("Product successfully added to Cart")
+    alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`)
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
