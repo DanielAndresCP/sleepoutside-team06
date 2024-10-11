@@ -1,5 +1,25 @@
+import ExternalServices from "./ExternalServices.mjs";
 import { getLocalStorage } from "./utils.mjs"
 import { getMoneyString } from "./utils.mjs";
+
+
+function packageItems(items) {
+    const simplifiedItems = items.map((item) => ({
+        id: item.Id,
+        price: item.FinalPrice,
+        name: item.Name,
+        quantity: item.quantity,
+    }));
+    return simplifiedItems;
+}
+
+function formDataToJSON(formElement) {
+    const data = new FormData(formElement)
+
+    return Object.fromEntries(data)
+}
+
+const services = new ExternalServices()
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -17,7 +37,12 @@ export default class CheckoutProcess {
         this.list = getLocalStorage(this.key);
         this.calculateItemSummary();
 
-        document.querySelector("#zip-code").addEventListener("blur", () => { this.calculateOrdertotal() })
+        document.querySelector("#zip").addEventListener("blur", () => { this.calculateOrdertotal() })
+        document.querySelector(".checkout form button").addEventListener("click", (e) => {
+            e.preventDefault()
+
+            this.checkout()
+        })
     }
 
     calculateItemSummary() {
@@ -61,8 +86,31 @@ export default class CheckoutProcess {
 
         const shippingAmountElement = document.querySelector(`${this.outputSelector} #result-shipping-estimate`)
         shippingAmountElement.textContent = getMoneyString(this.shipping)
-        
+
         const orderTotalElement = document.querySelector(`${this.outputSelector} #result-order-total`)
         orderTotalElement.textContent = getMoneyString(this.orderTotal)
+    }
+
+    async checkout() {
+        const formElement = document.forms["checkout"];
+
+
+        const json = formDataToJSON(formElement);
+        this.calculateOrdertotal()
+
+        // add totals, and item details
+        json.orderDate = new Date().toISOString();
+        json.orderTotal = this.orderTotal.toFixed(2);
+        json.tax = this.tax.toFixed(2);
+        json.shipping = this.shipping;
+        json.items = packageItems(this.list);
+        console.log(json);
+        
+        try {
+            const res = await services.checkout(json);
+            console.log(res);
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
