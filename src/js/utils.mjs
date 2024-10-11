@@ -87,9 +87,7 @@ export function alertMessage(message, scroll = true) {
 
   closeAlertElement.addEventListener("click", (e) => {
     if (e.target.tagName === "SPAN") {
-      console.log(e.target);
       document.querySelector("main").removeChild(e.target.closest(".alert-list"))
-      
     }
   })
 

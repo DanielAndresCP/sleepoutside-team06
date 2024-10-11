@@ -104,11 +104,9 @@ export default class CheckoutProcess {
         json.tax = this.tax.toFixed(2);
         json.shipping = this.shipping;
         json.items = packageItems(this.list);
-        // console.log(json);
 
         try {
             const res = await services.checkout(json);
-            // console.log(res);
             if (res.orderId) {
                 setLocalStorage("so-cart", "")
                 window.location.pathname = "/checkout/success.html"
