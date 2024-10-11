@@ -76,8 +76,9 @@ export function getMoneyString(amount, locale = "en-US", currency = "USD") {
 
 
 export function alertMessage(message, scroll = true) {
+  const alertContainerClass = "info-alert"
   const container = document.createElement("div")
-  container.classList.add("alert-list")
+  container.classList.add(alertContainerClass)
 
   const messageElement = document.createElement("p")
   messageElement.textContent = message
@@ -87,7 +88,7 @@ export function alertMessage(message, scroll = true) {
 
   closeAlertElement.addEventListener("click", (e) => {
     if (e.target.tagName === "SPAN") {
-      document.querySelector("main").removeChild(e.target.closest(".alert-list"))
+      document.querySelector("main").removeChild(e.target.closest(`.${alertContainerClass}`))
     }
   })
 
