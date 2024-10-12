@@ -57,19 +57,15 @@ export default class ProductDetails {
     const newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
     const quantity = 1;
     const productToAdd = { ...this.product, quantity };
-    let productExists = false;
-    newStoredProducts.forEach(product => {
-        if (product.id === productToAdd.id) {
-            product.quantity += quantity;
-            productExists = true;
-        }
-    });
-    if (!productExists) {
+    const existingProduct = newStoredProducts.find(product => product.id === productToAdd.id);
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
+    } else {
         newStoredProducts.push(productToAdd);
     }
     setLocalStorage("so-cart", newStoredProducts);
     alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`);
-}
+  }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
     element.insertAdjacentHTML(
