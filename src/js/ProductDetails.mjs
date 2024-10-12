@@ -2,14 +2,12 @@ import { getLocalStorage, setLocalStorage, getMoneyString, alertMessage } from "
 
 function productDetailsTemplate(product) {
   const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
-
   if (isDiscounted) {
     const priceDiff = getMoneyString(
       product.SuggestedRetailPrice - product.FinalPrice,
     );
     var discountBadgeHTML = `<span class="product-discount-badge">${priceDiff} OFF</span>`;
   }
-
   return `
     <section class="product-detail">
         <h3>${product.Brand.Name}</h3>
@@ -41,17 +39,6 @@ export default class ProductDetails {
       .getElementById("addToCart")
       .addEventListener("click", this.addProductToCart.bind(this));
   }
-  // addProductToCart() {
-  //   const storedProducts = getLocalStorage("so-cart");
-  //   const newStoredProducts = Array.isArray(storedProducts)
-  //     ? storedProducts
-  //     : [];
-  //   const quantity = 1;
-  //   const productToAdd = { ...this.product, quantity };
-  //   newStoredProducts.push(productToAdd);
-  //   setLocalStorage("so-cart", newStoredProducts);
-  //   alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`)
-  // }
   addProductToCart() {
     const storedProducts = getLocalStorage("so-cart");
     let newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
@@ -59,7 +46,7 @@ export default class ProductDetails {
     const productToAdd = { ...this.product, quantity };
     let productExists = false;
     newStoredProducts = newStoredProducts.map(product => {
-      if (product.Id === productToAdd.Id) { // Corrected the property name to match the product object
+      if (product.Id === productToAdd.Id) {
         productExists = true;
         return { ...product, quantity: product.quantity + quantity };
       }
