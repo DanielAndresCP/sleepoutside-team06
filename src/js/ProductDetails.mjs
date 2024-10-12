@@ -59,8 +59,9 @@ export default class ProductDetails {
     const productToAdd = { ...this.product, quantity };
     const existingProductIndex = newStoredProducts.findIndex(product => product.id === productToAdd.id);
     if (existingProductIndex !== -1) {
+      console.log(newStoredProducts)
       console.log(existingProductIndex);
-      newStoredProducts[existingProductIndex].quantity += quantity;
+      newStoredProducts[existingProductIndex.id].quantity += quantity;
     } else {
       newStoredProducts.push(productToAdd);
     }
