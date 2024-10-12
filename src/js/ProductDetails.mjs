@@ -54,13 +54,18 @@ export default class ProductDetails {
   // }
   addProductToCart() {
     const storedProducts = getLocalStorage("so-cart");
-    const newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
+    let newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
     const quantity = 1;
     const productToAdd = { ...this.product, quantity };
-    const existingProduct = newStoredProducts.find(product => product.id === productToAdd.id);
-    if (existingProduct) {
-        existingProduct.quantity += quantity;
-    } else {
+    let productExists = false;
+    newStoredProducts = newStoredProducts.map(product => {
+        if (product.id === productToAdd.id) {
+            productExists = true;
+            return { ...product, quantity: product.quantity + quantity };
+        }
+        return product;
+    });
+    if (!productExists) {
         newStoredProducts.push(productToAdd);
     }
     setLocalStorage("so-cart", newStoredProducts);
