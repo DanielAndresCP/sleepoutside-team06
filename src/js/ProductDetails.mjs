@@ -57,13 +57,15 @@ export default class ProductDetails {
     const newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
     const quantity = 1;
     const productToAdd = { ...this.product, quantity };
+    console.log("Product to add:", productToAdd);
+    console.log("Stored products:", newStoredProducts);
     const existingProductIndex = newStoredProducts.findIndex(product => product.id === productToAdd.id);
     if (existingProductIndex !== -1) {
-      console.log(newStoredProducts)
-      console.log(existingProductIndex);
-      newStoredProducts[existingProductIndex.id].quantity += quantity;
+        console.log("Existing product found at index:", existingProductIndex);
+        newStoredProducts[existingProductIndex].quantity += quantity;
     } else {
-      newStoredProducts.push(productToAdd);
+        console.log("Adding new product to cart");
+        newStoredProducts.push(productToAdd);
     }
     setLocalStorage("so-cart", newStoredProducts);
     alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`);
