@@ -47,8 +47,12 @@ export default class ProductDetails {
       ? storedProducts
       : [];
     const quantity = 1;
-    const productToAdd = { ...this.product, quantity };
-    newStoredProducts.push(productToAdd);
+    if (this.product.productId in newStoredProducts) {
+      const productToAdd = { ...this.product, quantity };
+      newStoredProducts.push(productToAdd);
+    } else {
+      newStoredProducts[productId].quantity += 1;
+    }
     setLocalStorage("so-cart", newStoredProducts);
     alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`)
   }
