@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, getMoneyString } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getMoneyString, alertMessage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
@@ -50,6 +50,7 @@ export default class ProductDetails {
     const productToAdd = { ...this.product, quantity };
     newStoredProducts.push(productToAdd);
     setLocalStorage("so-cart", newStoredProducts);
+    alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`)
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
