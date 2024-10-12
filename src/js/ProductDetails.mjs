@@ -41,16 +41,30 @@ export default class ProductDetails {
       .getElementById("addToCart")
       .addEventListener("click", this.addProductToCart.bind(this));
   }
+  // addProductToCart() {
+  //   const storedProducts = getLocalStorage("so-cart");
+  //   const newStoredProducts = Array.isArray(storedProducts)
+  //     ? storedProducts
+  //     : [];
+  //   const quantity = 1;
+  //   const productToAdd = { ...this.product, quantity };
+  //   newStoredProducts.push(productToAdd);
+  //   setLocalStorage("so-cart", newStoredProducts);
+  //   alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`)
+  // }
   addProductToCart() {
     const storedProducts = getLocalStorage("so-cart");
-    const newStoredProducts = Array.isArray(storedProducts)
-      ? storedProducts
-      : [];
+    const newStoredProducts = Array.isArray(storedProducts) ? storedProducts : [];
     const quantity = 1;
     const productToAdd = { ...this.product, quantity };
-    newStoredProducts.push(productToAdd);
+    const existingProductIndex = newStoredProducts.findIndex(product => product.id === productToAdd.id);
+    if (existingProductIndex !== -1) {
+      newStoredProducts[existingProductIndex].quantity += quantity;
+    } else {
+      newStoredProducts.push(productToAdd);
+    }
     setLocalStorage("so-cart", newStoredProducts);
-    alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`)
+    alertMessage(`${this.product.NameWithoutBrand} successfully added to Cart`);
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
